@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: "{{ include "vahter-chart.fullname" . }}-test-connection"
+  labels:
+    {{- include "vahter-chart.labels" . | nindent 4 }}
+  annotations:
+    "helm.sh/hook": test
+    "helm.sh/hook-delete-policy": hook-succeeded,hook-failed
+spec:
+  containers:
+    - name: test
+      image: curlimages/curl:latest
+      command: ['curl', '-f', 'http://{{ include "vahter-chart.fullname" . }}:{{ .Values.service.port }}/']
+  restartPolicy: Never

@@ -1,0 +1,6 @@
+apiVersion: v2
+name: vahter-chart
+description: Helm chart для регистрации приходов на вахте
+type: application
+version: 0.1.0
+appVersion: "1.0"

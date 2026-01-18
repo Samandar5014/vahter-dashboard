@@ -1,0 +1,42 @@
+replicaCount: 1
+
+image:
+  repository: vahter-app
+  pullPolicy: IfNotPresent
+  # tag: latest  # по умолчанию берётся latest
+
+service:
+  type: NodePort   # или LoadBalancer, если хочешь внешний IP
+  port: 3000
+  nodePort: 30001  # удобный порт на хосте (можно изменить)
+
+resources:
+  limits:
+    cpu: 500m
+    memory: 512Mi
+  requests:
+    cpu: 200m
+    memory: 256Mi  # можно добавить limits/requests позже
+
+nameOverride: ""
+fullnameOverride: ""
+
+serviceAccount:
+  create: false
+
+podAnnotations: {}
+
+podSecurityContext: {}
+securityContext: {}
+
+ingress:
+  enabled: false
+
+autoscaling:
+  enabled: false
+
+nodeSelector: {}
+
+tolerations: []
+
+affinity: {}

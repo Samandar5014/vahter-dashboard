@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Вахта — Журнал приходов</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Журнал вахты</h1>
+            <p class="subtitle">Регистрация прихода сотрудников</p>
+        </header>
+
+        <section class="form-section">
+            <form method="POST" action="/">
+                <div class="form-group">
+                    <label for="name">ФИО / Имя</label>
+                    <input type="text" id="name" name="name" required placeholder="Иванов Иван Иванович" autocomplete="off">
+                </div>
+
+                <div class="form-group">
+                    <label for="role">Роль / Должность</label>
+                    <input type="text" id="role" name="role" required placeholder="Сварщик / Охранник / Мастер" autocomplete="off">
+                </div>
+
+                <div class="form-group">
+                    <label for="note">Заметка / Состояние</label>
+                    <textarea id="note" name="note" rows="3" placeholder="Опоздал на 40 мин / Пришел в нетрезвом виде / ..."></textarea>
+                </div>
+
+                <button type="submit" class="btn btn-primary">Зарегистрировать приход</button>
+            </form>
+        </section>
+
+        <section class="table-section">
+            <h2>Записи за текущую сессию ({{ records|length }})</h2>
+            
+            {% if records %}
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Время</th>
+                            <th>ФИО</th>
+                            <th>Роль</th>
+                            <th>Заметка</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for record in records|reverse %}
+                        <tr>
+                            <td class="time">{{ record.time }}</td>
+                            <td>{{ record.name }}</td>
+                            <td>{{ record.role }}</td>
+                            <td class="note">{{ record.note or '—' }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            {% else %}
+            <p class="empty">Пока никто не зарегистрирован в этой сессии</p>
+            {% endif %}
+        </section>
+    </div>
+</body>
+</html>
