@@ -1,0 +1,20 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: vahter-monitor
+  namespace: monitoring  # обязательно в namespace Prometheus!
+  labels:
+    release: prometheus  # ключевой label, чтобы попал под selector kube-prometheus-stack
+spec:
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: vahter-chart         # из твоего Deployment labels
+      app.kubernetes.io/instance: vahter-dashboard  # из твоего Deployment labels
+  namespaceSelector:
+    matchNames:
+      - default  # namespace твоего приложения
+  endpoints:
+  - port: http
+    path: /metrics
+    interval: 10s  # для быстрого теста
+    scheme: http
