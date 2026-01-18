@@ -17,4 +17,4 @@ COPY . .
 EXPOSE 3000
 
 # Запуск приложения
-CMD ["python", "app.py"]
+ENTRYPOINT ["python", "app.py"]
