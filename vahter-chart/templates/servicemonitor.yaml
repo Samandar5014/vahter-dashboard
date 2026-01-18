@@ -4,8 +4,9 @@ metadata:
   name: vahter-monitor
   namespace: monitoring
   labels:
-    release: prometheus
-    app.kubernetes.io/part-of: kube-prometheus-stack   # ← ЭТА СТРОКА НОВАЯ И ОБЯЗАТЕЛЬНАЯ
+    release: prometheus                     # обязательно
+    app.kubernetes.io/part-of: kube-prometheus-stack  # часто требуется
+    prometheus: kube-prometheus-stack       # дополнительный label для многих установок
 spec:
   selector:
     matchLabels:
