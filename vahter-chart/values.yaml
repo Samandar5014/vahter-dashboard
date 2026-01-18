@@ -8,7 +8,7 @@ image:
 service:
   type: NodePort   # или LoadBalancer, если хочешь внешний IP
   port: 3000
-  nodePort: 30001  # удобный порт на хосте (можно изменить)
+  nodePort: 30002  # удобный порт на хосте (можно изменить)
 
 resources:
   limits:
