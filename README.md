@@ -241,6 +241,7 @@ Argo CD:
 ```
 link for photos
 logs:https://github.com/Samandar5014/vahter-dashboard/blob/9352ba9e5eb30024751177b8d6cdac5d3a866a00/Logs%20from%20grafana.jpg
-metriks:
+metriks:https://github.com/Samandar5014/vahter-dashboard/blob/2ffcf5d561c147f75b320858fc0ae94d3117f4d2/Screenshot%202026-01-18%20154958.png
 ```
+
 
