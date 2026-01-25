@@ -238,4 +238,9 @@ Argo CD:
 │   ├── values.yaml
 │   └── Chart.yaml
 ```
+```
+link for photos
+logs:https://github.com/Samandar5014/vahter-dashboard/blob/9352ba9e5eb30024751177b8d6cdac5d3a866a00/Logs%20from%20grafana.jpg
+metriks:
+```
 
